@@ -20,16 +20,16 @@ with(
 
 sub mvp_multivalue_args { qw(extra_scanners skips) }
 sub mvp_aliases {
-	return {
-		extra_scanner => 'extra_scanners',
-		skip => 'skips'
-	}
+  return {
+    extra_scanner => 'extra_scanners',
+    skip => 'skips'
+  }
 }
 
 has extra_scanners => (
   is  => 'ro',
   isa => 'ArrayRef[Str]',
-  default => sub { [] },
+  default => sub { [ 'Moose' ] },
 );
 
 has skips => (
@@ -46,8 +46,6 @@ sub register_prereqs {
 
   my @modules;
 
-  my $scanner = Perl::PrereqScanner::Lite->new({ extra_scanners => $self->extra_scanners });
-
   my @sets = (
     [ configure => 'found_configure_files' ], # must come before runtime
     [ runtime => 'found_files'      ],
@@ -59,7 +57,9 @@ sub register_prereqs {
   for my $fileset (@sets) {
     my ($phase, $method) = @$fileset;
 
+    my $scanner = Perl::PrereqScanner::Lite->new({ extra_scanners => $self->extra_scanners });
     my $req   = CPAN::Meta::Requirements->new;
+
     my $files = $self->$method;
 
     foreach my $file (@$files) {
