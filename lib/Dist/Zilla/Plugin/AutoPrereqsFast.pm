@@ -132,7 +132,7 @@ no Moose;
 
 In your F<dist.ini>:
 
-  [AutoPrereqs]
+  [AutoPrereqsFast]
   skip = ^Foo|Bar$
   skip = ^Other::Dist
 

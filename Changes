@@ -1,6 +1,7 @@
 Revision history for Dist-Zilla-Plugin-AutoPrereqsFast
 
 {{$NEXT}}
+          - Fixed SYNOPSIS
 
 0.001     2015-04-11 14:32:40+02:00 Europe/Amsterdam
           Initial release to an unsuspecting world
