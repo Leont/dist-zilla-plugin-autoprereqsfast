@@ -42,7 +42,7 @@ sub register_prereqs {
 
   require Perl::PrereqScanner::Lite;
   require CPAN::Meta::Requirements;
-  require List::MoreUtils;  # uniq
+  require List::Util;  # uniq
 
   my @modules;
 
@@ -86,7 +86,7 @@ sub register_prereqs {
       s{/}{::}g for @this_thing;
 
       push @this_thing, $file->content =~ /package\s+([^\s;]+)/g;
-      push @modules, List::MoreUtils::uniq @this_thing;
+      push @modules, List::Util::uniq(@this_thing);
 
       # parse a file, and merge with existing prereqs
       $self->log_debug([ 'scanning %s for %s prereqs', $file->name, $phase ]);
