@@ -1,6 +1,8 @@
 Revision history for Dist-Zilla-Plugin-AutoPrereqsFast
 
 {{$NEXT}}
+
+0.002     2016-08-01 22:16:05+02:00 Europe/Amsterdam
           - Switch from List::MoreUtils to List::Util
           - Fixed SYNOPSIS
 
