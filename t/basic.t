@@ -6,7 +6,7 @@ use Test::More tests => 3;
 
 
 use Test::DZil;
-use JSON::Tiny qw(decode_json);
+use JSON::PP qw(decode_json);
 use File::Slurper qw(read_text);
 
 sub build_meta {
