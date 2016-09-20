@@ -1,6 +1,7 @@
 Revision history for Dist-Zilla-Plugin-AutoPrereqsFast
 
 {{$NEXT}}
+          - Fix tests for Dist::Zilla 6.007 [Chris Reinhardt]
 
 0.002     2016-08-01 22:16:05+02:00 Europe/Amsterdam
           - Switch from List::MoreUtils to List::Util

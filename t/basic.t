@@ -2,17 +2,19 @@
 use strict;
 use warnings;
 
-use Test::More 0.88;
+use Test::More tests => 3;
+
 
 use Test::DZil;
-use YAML::Tiny;
+use JSON::Tiny qw(decode_json);
+use File::Slurper qw(read_text);
 
 sub build_meta {
   my $tzil = shift;
 
   $tzil->build;
 
-  YAML::Tiny->new->read($tzil->tempdir->file('build/META.yml'))->[0];
+  return decode_json(read_text($tzil->tempdir->path('build/META.json')));
 }
 
 my $tzil = Builder->from_config(
@@ -64,7 +66,7 @@ $tzil = Builder->from_config(
         qw(GatherDir ExecDir),
         [ AutoPrereqsFast => { skip             => '^DZPA::Skip',
                                configure_finder => ':IncModules' } ],
-        [ MetaYAML => { version => 2 } ],
+        [ MetaJSON => { version => 2 } ],
       ),
       'source/inc/DZPA.pm' => "use DZPA::NotInDist;\n use DZPA::Configure;\n",
     },
